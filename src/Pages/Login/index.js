@@ -2,7 +2,7 @@ import React , {useContext} from 'react'
 import { auth } from 'firebaseConfig'
 import { useLocation } from 'wouter';
 import firebase from 'firebase'
-import { MicrosoftLoginButton, FacebookLoginButton, GoogleLoginButton, TwitterLoginButton, GithubLoginButton } from "react-social-login-buttons";
+import { FacebookLoginButton, GoogleLoginButton, TwitterLoginButton } from "react-social-login-buttons";
 
 import FirebaseContext from 'Context/firebaseContext';
 
@@ -20,21 +20,6 @@ export default function Login() {
             })
             .catch((error) => {
 
-            });
-    }
-
-    const microsoftLogin = () => {
-        const provider = new firebase.auth.OAuthProvider('microsoft.com')
-        // provider.setCustomParameters({
-        //     prompt: "consent",
-        //     tenant: "f8cdef31-a31e-4b4a-93e4-5f571e91255a",
-        //   })
-        auth.signInWithPopup(provider)
-            .then(function (result) {
-                console.log('xbox always')
-            })
-            .catch(function (error) {
-                console.log(error);
             });
     }
 
@@ -57,17 +42,6 @@ export default function Login() {
             })
             .catch(function (error) {
                 console.log(error);
-            });
-    }
-
-    const githubLogin = () => {
-        const provider = new firebase.auth.GithubAuthProvider()
-        auth.signInWithPopup(provider)
-            .then(function (result) {
-                console.log(result)
-            })
-            .catch(function (error) {
-        
             });
     }
 
@@ -97,16 +71,6 @@ export default function Login() {
                     <TwitterLoginButton>
                         <span>Login with Twitter</span>
                     </TwitterLoginButton>
-                </div>
-                <div onClick={microsoftLogin} className="mt-5">
-                    <MicrosoftLoginButton>
-                        <span>Login with Microsoft</span>
-                    </MicrosoftLoginButton>
-                </div>
-                <div onClick={githubLogin} className="my-5">
-                    <GithubLoginButton>
-                        <span>Login with Github</span>
-                    </GithubLoginButton>
                 </div>
             </div>
         </div>
